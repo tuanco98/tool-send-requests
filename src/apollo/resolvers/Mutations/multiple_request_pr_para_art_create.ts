@@ -38,7 +38,7 @@ let countRequestSuccess = 0;
 let totalTimerequest = 0;
 let infoRequestsArr: InfoRequset[] = []
 
-const request = async (params) => {
+const request = async (params:any) => {
     try {
         const time_start = performance.now();
         const response = await axios.post(config_BUILD_URL, {
@@ -88,8 +88,8 @@ const request = async (params) => {
     }
 };
 
-const multipleRequest = async (request_count, params) => {
-    const promises = [];
+const multipleRequest = async (request_count: number, params: any) => {
+    const promises: any[] = [];
     for (let i = 0; i < request_count; i++) {
         promises.push(request(params));
     }
