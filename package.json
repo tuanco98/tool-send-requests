@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "ts-node src/index.ts",
+    "start": "node dist/index.js",
     "test": "ts-node src/test.ts",
     "build": "rm -rf dist && tsc",
     "dep": "docker-compose -f docker-compose.yml up --build -d",
