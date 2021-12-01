@@ -1,8 +1,8 @@
-import { send_requests } from "./Mutations/send_request";
+import { multiple_request_pr_para_art_create } from "./Mutations/multiple_request_pr_para_art_create";
 
 const resolvers = {
     Mutation: {
-        send_requests
+        multiple_request_pr_para_art_create
     },
 };
 export { resolvers };
