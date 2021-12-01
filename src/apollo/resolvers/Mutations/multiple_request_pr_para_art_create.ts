@@ -1,46 +1,46 @@
-import axios from "axios";
-import { config_BUILD_URL } from "../../../config";
-const { PerformanceObserver, performance } = require('perf_hooks');
+import axios from "axios"
+import { config_BUILD_URL } from "../../../config"
+const { PerformanceObserver, performance } = require("perf_hooks")
 
 type InputParam = {
-    request_number: number;
+    request_number: number
     params: {
-        ownerAddress: string;
-        ownerName: string;
-        signature: string;
-        createdAt: number;
-        structure: string;
-        image: string;
-        name: string;
-        runeCount: number;
-        template: boolean;
-    };
-};
+        ownerAddress: string
+        ownerName: string
+        signature: string
+        createdAt: number
+        structure: string
+        image: string
+        name: string
+        runeCount: number
+        template: boolean
+    }
+}
 type ApiRespose = {
-	_id: string
+    _id: string
     errorCode: String
-	errorMessage: String
+    errorMessage: String
 }
 type InfoRequset = {
     time: number
     response: ApiRespose
 }
 type ResultType = {
-    totalRequest: number;
-    errorPercent: number;
-    requestCountPerSec: number;
-    milisecondPerRequest: number;
-    code: number;
+    totalRequest: number
+    errorPercent: number
+    requestCountPerSec: number
+    milisecondPerRequest: number
+    code: number
     infoRequests: InfoRequset[]
-};
+}
 
-let countRequestSuccess = 0;
-let totalTimerequest = 0;
+let countRequestSuccess = 0
+let totalTimerequest = 0
 let infoRequestsArr: InfoRequset[] = []
 
-const request = async (params:any) => {
+const request = async (params: any) => {
     try {
-        const time_start = performance.now();
+        const time_start = performance.now()
         const response = await axios.post(config_BUILD_URL, {
             query: `
                 mutation pr_para_art_create(
@@ -73,46 +73,46 @@ const request = async (params:any) => {
             variables: params,
         })
         const time_end = performance.now()
-        const time = time_end-time_start;
+        const time = time_end - time_start
         totalTimerequest += time
         infoRequestsArr.push({
             time,
-            response: response.data.data.pr_para_art_create
+            response: response.data.data.pr_para_art_create,
         })
         if (response.data.data.pr_para_art_create.errorMessage === "Success") {
-            countRequestSuccess++;
+            countRequestSuccess++
         }
     } catch (err) {
-        console.log(err);
-        throw err;
+        console.log(err)
+        throw err
     }
-};
+}
 
 const multipleRequest = async (request_count: number, params: any) => {
-    const promises: any[] = [];
+    const promises: any[] = []
     for (let i = 0; i < request_count; i++) {
-        promises.push(request(params));
+        promises.push(request(params))
     }
-    await Promise.all(promises);
-};
+    await Promise.all(promises)
+}
 
 export const multiple_request_pr_para_art_create = async (root: any, args: any) => {
     try {
-        const { request_number, params } = args as InputParam;
-        countRequestSuccess = 0;
-        totalTimerequest=0
-        infoRequestsArr=[]
-        await multipleRequest(request_number, params);
+        const { request_number, params } = args as InputParam
+        countRequestSuccess = 0
+        totalTimerequest = 0
+        infoRequestsArr = []
+        await multipleRequest(request_number, params)
         const result: ResultType = {
             totalRequest: request_number,
-            errorPercent: (request_number-countRequestSuccess)/request_number * 100,
-            requestCountPerSec: 1000 / (totalTimerequest/request_number),
-            milisecondPerRequest: totalTimerequest/request_number,
+            errorPercent: ((request_number - countRequestSuccess) / request_number) * 100,
+            requestCountPerSec: 1000 / (totalTimerequest / request_number),
+            milisecondPerRequest: totalTimerequest / request_number,
             code: 200,
-            infoRequests: infoRequestsArr
+            infoRequests: infoRequestsArr,
         }
         return result
     } catch (e) {
-        throw e;
+        throw e
     }
-};
+}

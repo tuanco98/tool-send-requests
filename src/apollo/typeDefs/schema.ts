@@ -1,4 +1,4 @@
-import { gql } from "apollo-server";
+import { gql } from "apollo-server"
 
 export const typeDefs = gql`
     input InputParaart {
@@ -13,19 +13,19 @@ export const typeDefs = gql`
         template: Boolean!
     }
     type CreateParaArtResponse {
-		errorCode: String!
-		errorMessage: String!
-		_id: String
-	}
+        errorCode: String!
+        errorMessage: String!
+        _id: String
+    }
     type InfoRequset {
         time: Float
         response: CreateParaArtResponse
     }
     type RequestParaartCreate {
-        totalRequest: Int,
-        errorPercent: Float,
-        requestCountPerSec: Float,
-        milisecondPerRequest: Float,
+        totalRequest: Int
+        errorPercent: Float
+        requestCountPerSec: Float
+        milisecondPerRequest: Float
         code: Int
         infoRequests: [InfoRequset]
     }
@@ -35,4 +35,4 @@ export const typeDefs = gql`
     type Mutation {
         multiple_request_pr_para_art_create(request_number: Int!, params: InputParaart!): RequestParaartCreate
     }
-`;
+`
