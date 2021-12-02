@@ -33,6 +33,6 @@ export const typeDefs = gql`
         test: String
     }
     type Mutation {
-        multiple_request_pr_para_art_create(request_number: Int!, params: InputParaart!): RequestParaartCreate
+        multiple_request_pr_para_art_create(http_url: String! request_number: Int!, params: InputParaart!): RequestParaartCreate
     }
 `

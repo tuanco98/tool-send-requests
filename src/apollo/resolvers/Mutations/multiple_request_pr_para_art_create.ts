@@ -3,6 +3,7 @@ import { config_BUILD_URL } from "../../../config"
 const { PerformanceObserver, performance } = require("perf_hooks")
 
 type InputParam = {
+    http_url: string
     request_number: number
     params: {
         ownerAddress: string
@@ -38,10 +39,10 @@ let countRequestSuccess = 0
 let totalTimerequest = 0
 let infoRequestsArr: InfoRequset[] = []
 
-const request = async (params: any) => {
+const request = async (http_url: string, params: any) => {
     try {
         const time_start = performance.now()
-        const response = await axios.post(config_BUILD_URL, {
+        const response = await axios.post(http_url, {
             query: `
                 mutation pr_para_art_create(
                     $ownerAddress: String!
@@ -88,21 +89,21 @@ const request = async (params: any) => {
     }
 }
 
-const multipleRequest = async (request_count: number, params: any) => {
+const multipleRequest = async (http_url: string, request_count: number, params: any) => {
     const promises: any[] = []
     for (let i = 0; i < request_count; i++) {
-        promises.push(request(params))
+        promises.push(request(http_url, params))
     }
     await Promise.all(promises)
 }
 
 export const multiple_request_pr_para_art_create = async (root: any, args: any) => {
     try {
-        const { request_number, params } = args as InputParam
+        const { http_url, request_number, params } = args as InputParam
         countRequestSuccess = 0
         totalTimerequest = 0
         infoRequestsArr = []
-        await multipleRequest(request_number, params)
+        await multipleRequest(http_url, request_number, params)
         const result: ResultType = {
             totalRequest: request_number,
             errorPercent: ((request_number - countRequestSuccess) / request_number) * 100,
