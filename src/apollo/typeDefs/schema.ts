@@ -1,6 +1,7 @@
 import { gql } from "apollo-server"
 
 export const typeDefs = gql`
+    scalar JSON
     input InputParaart {
         ownerAddress: String!
         ownerName: String
@@ -34,5 +35,7 @@ export const typeDefs = gql`
     }
     type Mutation {
         multiple_request_pr_para_art_create(http_url: String! request_number: Int!, params: InputParaart!): RequestParaartCreate
+        pr_user_unbox(tokenId: Int! private_key: String!): JSON
+        pr_user_fusion(runeId: Int! option: [Int] private_key: String!): JSON
     }
 `
