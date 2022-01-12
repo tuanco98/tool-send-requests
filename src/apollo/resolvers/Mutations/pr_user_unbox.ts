@@ -8,6 +8,9 @@ export const pr_user_unbox = async (root: any, args: any, ctx: any) => {
         if(!private_key) throw new Error('privateKey missing')
 
         web3.eth.accounts.wallet.add(private_key)
+        
+        console.log(web3.eth.accounts.wallet.length)
+
         const { address } = web3.eth.accounts.privateKeyToAccount(private_key)
 
         const result = await boxContract.methods.unbox(tokenId).send({from: address, gas: 200000})

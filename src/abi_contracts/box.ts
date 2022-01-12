@@ -176,6 +176,16 @@ export const Box_ABI: AbiItem[] = [
     },
     {
         inputs: [
+            { internalType: "address", name: "user", type: "address" },
+            { internalType: "uint256", name: "ticket", type: "uint256" },
+        ],
+        name: "addWhitelistTicket",
+        outputs: [],
+        stateMutability: "nonpayable",
+        type: "function",
+    },
+    {
+        inputs: [
             { internalType: "address", name: "to", type: "address" },
             { internalType: "uint256", name: "tokenId", type: "uint256" },
         ],
@@ -467,4 +477,11 @@ export const Box_ABI: AbiItem[] = [
         type: "function",
     },
     { inputs: [], name: "unpause", outputs: [], stateMutability: "nonpayable", type: "function" },
+    {
+        inputs: [{ internalType: "address", name: "", type: "address" }],
+        name: "whitelistTicket",
+        outputs: [{ internalType: "uint256", name: "", type: "uint256" }],
+        stateMutability: "view",
+        type: "function",
+    },
 ]
