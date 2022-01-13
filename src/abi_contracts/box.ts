@@ -62,7 +62,7 @@ export const Box_ABI: AbiItem[] = [
         inputs: [
             { indexed: false, internalType: "address", name: "owner", type: "address" },
             { indexed: false, internalType: "uint256", name: "boxId", type: "uint256" },
-            { indexed: false, internalType: "uint256[]", name: "runes", type: "uint256[]" },
+            { indexed: false, internalType: "uint256[16]", name: "runes", type: "uint256[16]" },
         ],
         name: "Reward",
         type: "event",
@@ -359,7 +359,7 @@ export const Box_ABI: AbiItem[] = [
     {
         inputs: [
             { internalType: "uint256", name: "_boxId", type: "uint256" },
-            { internalType: "uint256[]", name: "_runes", type: "uint256[]" },
+            { internalType: "uint256[16]", name: "_runes", type: "uint256[16]" },
         ],
         name: "reward",
         outputs: [],
