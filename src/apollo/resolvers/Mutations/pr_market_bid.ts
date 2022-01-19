@@ -21,7 +21,7 @@ export const pr_market_bid = async (root: any, args: any, ctx: any) => {
         const { address } = web3.eth.accounts.privateKeyToAccount(private_key)
 
         const result = await marketContract.methods
-            .bid(bid, orderId, web3.utils.toWei(amount.toString()))
+            .bid(orderId, web3.utils.toWei(amount.toString()))
             .send({ from: address, gas: 1000000 })
             .then((receipt) => {
                 return receipt
