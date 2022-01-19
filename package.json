@@ -23,6 +23,7 @@
   "dependencies": {
     "apollo-server": "^2.25.2",
     "axios": "^0.24.0",
+    "bn.js": "^5.2.0",
     "dotenv": "^10.0.0",
     "graphql": "^15.8.0",
     "perf_hooks": "^0.0.1",

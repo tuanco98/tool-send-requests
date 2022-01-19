@@ -1,3 +1,4 @@
+import BN from "bn.js"
 import { marketContract, web3 } from "../../../web3"
 
 interface CreateOrder {
@@ -22,9 +23,9 @@ export const pr_market_create_order = async (root: any, args: any, ctx: any) => 
         web3.eth.accounts.wallet.add(private_key)
 
         const { address } = web3.eth.accounts.privateKeyToAccount(private_key)
-
+        const [init_price, spot_price] = [web3.utils.toWei(initPrice.toString(),'ether'), web3.utils.toWei(spotPrice.toString(),'ether')]
         const result = await marketContract.methods
-            .createOrder(contractNft, currency, nftId, timeEnd, initPrice, spotPrice)
+            .createOrder(contractNft, currency, nftId, timeEnd, init_price, spot_price)
             .send({ from: address, gas: 1000000 })
             .then((receipt) => {
                 return receipt
