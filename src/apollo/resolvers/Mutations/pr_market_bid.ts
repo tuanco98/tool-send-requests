@@ -1,7 +1,7 @@
 import { marketContract, web3 } from "../../../web3"
 
 interface Bid {
-    bid: string
+    bid: number
     orderId: number
     amount: number
 }

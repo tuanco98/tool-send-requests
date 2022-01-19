@@ -42,7 +42,7 @@ export const typeDefs = gql`
         spotPrice: Float!
     }
     input Bid {
-        bid: String!
+        bid: Float!
         orderId: Int!
         amount: Float!
     }
