@@ -43,7 +43,7 @@ export const typeDefs = gql`
         amount: Float!
     }
     type StatisticFusion {
-        tokenId: Int
+        runeId: Int
         totalSoilFusion: Float
         totalSoilFusionWPotion: Float
         failedTotalSoilFusion: Float
@@ -61,6 +61,6 @@ export const typeDefs = gql`
         pr_market_bid(private_key: String! params: Bid!): JSON
     } 
     type Query {
-        statistic_user_fusion_with_date_get(start_timestamp: Float! end_timestamp: Float!): StatisticFusionPage
+        statistic_user_fusion_with_date_get(start_timestamp: Float! end_timestamp: Float!, mod_key: String!): StatisticFusionPage
     }
 `
