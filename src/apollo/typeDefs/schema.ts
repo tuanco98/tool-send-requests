@@ -68,7 +68,7 @@ export const typeDefs = gql`
         pr_market_bid(private_key: String! params: Bid!): JSON
     }
     type Query {
-        statistic_user_fusion_with_date_get(mode_key: String! start_timestamp: Float! end_timestamp: Float!): StatisticFusionPage
+        statistic_user_fusion_with_date_get(mod_key: String! start_timestamp: Float! end_timestamp: Float!): StatisticFusionPage
         statistic_box_with_date_get(mod_key: String start_timestamp: Float! end_timestamp: Float!): StatisticBox
     }
 
