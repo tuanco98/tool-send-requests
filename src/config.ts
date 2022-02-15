@@ -17,3 +17,5 @@ export const config_CONTRACT_MARKETPLACE_ADDRESS = process.env.CONTRACT_MARKETPL
 
 if (!process.env.MONGO_URI) throw new Error('MONGO_URI must be provided')
 export const config_MONGO_URI = process.env.MONGO_URI
+if (!process.env.MONGO_BOX_URI) throw new Error('MONGO_BOX_URI must be provided')
+export const config_MONGO_BOX_URI = process.env.MONGO_BOX_URI
