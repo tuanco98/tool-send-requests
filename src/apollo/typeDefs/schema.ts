@@ -30,9 +30,6 @@ export const typeDefs = gql`
         code: Int
         infoRequests: [InfoRequset]
     }
-    type Query {
-        test: String
-    }
     input CreateOrder {
         contractNft: String!
         currency: String!
@@ -45,11 +42,25 @@ export const typeDefs = gql`
         orderId: Int!
         amount: Float!
     }
+    type StatisticFusion {
+        tokenId: Int
+        totalSoilFusion: Float
+        totalSoilFusionWPotion: Float
+        failedTotalSoilFusion: Float
+        failedTotalSoilFusionWPotion: Float
+    }
+    type StatisticFusionPage{
+        total: Float
+        data: [StatisticFusion]
+    }
     type Mutation {
         multiple_request_pr_para_art_create(http_url: String! request_number: Int!, params: InputParaart!): RequestParaartCreate
         pr_user_unbox(tokenId: Int! private_key: String!): JSON
         pr_user_fusion(runeId: Int! option: [Int] private_key: String!): JSON
         pr_market_create_order(private_key: String! params: CreateOrder!): JSON
         pr_market_bid(private_key: String! params: Bid!): JSON
+    } 
+    type Query {
+        statistic_user_fusion_with_date_get(start_timestamp: Float! end_timestamp: Float!): StatisticFusionPage
     }
 `
