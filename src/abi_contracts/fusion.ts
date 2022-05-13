@@ -13,6 +13,7 @@ export const Fusion_ABI: AbiItem[] = [
         inputs: [
             { indexed: false, internalType: "address", name: "owner", type: "address" },
             { indexed: false, internalType: "uint256", name: "runeId", type: "uint256" },
+            { indexed: false, internalType: "uint256", name: "times", type: "uint256" },
             { indexed: false, internalType: "uint256[]", name: "option", type: "uint256[]" },
             { indexed: false, internalType: "bytes32", name: "key", type: "bytes32" },
         ],
@@ -29,7 +30,7 @@ export const Fusion_ABI: AbiItem[] = [
         anonymous: false,
         inputs: [
             { indexed: false, internalType: "bytes32", name: "key", type: "bytes32" },
-            { indexed: false, internalType: "bool", name: "success", type: "bool" },
+            { indexed: false, internalType: "uint256", name: "success", type: "uint256" },
         ],
         name: "Result",
         type: "event",
@@ -106,7 +107,7 @@ export const Fusion_ABI: AbiItem[] = [
     {
         inputs: [
             { internalType: "bytes32", name: "key", type: "bytes32" },
-            { internalType: "bool", name: "result", type: "bool" },
+            { internalType: "uint256", name: "result", type: "uint256" },
         ],
         name: "forging",
         outputs: [],
@@ -116,6 +117,7 @@ export const Fusion_ABI: AbiItem[] = [
     {
         inputs: [
             { internalType: "uint256", name: "runeId", type: "uint256" },
+            { internalType: "uint256", name: "times", type: "uint256" },
             { internalType: "uint256[]", name: "option", type: "uint256[]" },
         ],
         name: "fusion",
@@ -200,6 +202,7 @@ export const Fusion_ABI: AbiItem[] = [
         outputs: [
             { internalType: "address", name: "owner", type: "address" },
             { internalType: "uint256", name: "runeId", type: "uint256" },
+            { internalType: "uint256", name: "times", type: "uint256" },
             { internalType: "uint256", name: "status", type: "uint256" },
         ],
         stateMutability: "view",

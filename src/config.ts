@@ -15,6 +15,9 @@ export const config_CONTRACT_BOX_ADDRESS = process.env.CONTRACT_BOX_ADDRESS
 if (!process.env.CONTRACT_MARKETPLACE_ADDRESS) throw new Error('CONTRACT_MARKETPLACE_ADDRESS must be provided')
 export const config_CONTRACT_MARKETPLACE_ADDRESS = process.env.CONTRACT_MARKETPLACE_ADDRESS
 
+if (!process.env.WEB3_PROVIDER_AUTHEN_URI) throw new Error('WEB3_PROVIDER_AUTHEN_URI must be provided')
+export const config_WEB3_PROVIDER_AUTHEN_URI = process.env.WEB3_PROVIDER_AUTHEN_URI
+
 if (!process.env.MONGO_URI) throw new Error('MONGO_URI must be provided')
 export const config_MONGO_URI = process.env.MONGO_URI
 

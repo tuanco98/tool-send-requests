@@ -4,16 +4,16 @@ import { Contract } from "web3-eth-contract"
 import { Box_ABI } from "./abi_contracts/box"
 import { Fusion_ABI } from "./abi_contracts/fusion"
 import { MarketPlace_ABI } from "./abi_contracts/market"
-import { config_CONTRACT_BOX_ADDRESS, config_CONTRACT_FUSION_ADDRESS, config_CONTRACT_MARKETPLACE_ADDRESS } from "./config"
+import { config_CONTRACT_BOX_ADDRESS, config_CONTRACT_FUSION_ADDRESS, config_CONTRACT_MARKETPLACE_ADDRESS, config_WEB3_PROVIDER_AUTHEN_URI } from "./config"
 
 export let web3: Web3
 export let boxContract: Contract
 export let fusionContract: Contract
 export let marketContract: Contract
 
-export const connectWeb3 = async (provider: string) => {
+export const connectWeb3 = async () => {
     try {
-        web3 = new Web3(provider)
+        web3 = new Web3(config_WEB3_PROVIDER_AUTHEN_URI)
 
         //init smart contract
         boxContract = new web3.eth.Contract(Box_ABI, config_CONTRACT_BOX_ADDRESS)

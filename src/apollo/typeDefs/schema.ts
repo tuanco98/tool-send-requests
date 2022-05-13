@@ -60,10 +60,15 @@ export const typeDefs = gql`
         claimed_box: Float
         unbox_times: Float
     }
+    input ParamFusion {
+        runeId: Int!
+        times: Int!
+        options: [Int]!
+    }
     type Mutation {
         multiple_request_pr_para_art_create(http_url: String! request_number: Int!, params: InputParaart!): RequestParaartCreate
         pr_user_unbox(tokenId: Int! private_key: String!): JSON
-        pr_user_fusion(runeId: Int! option: [Int] private_key: String!): JSON
+        pr_user_fusion(quantity: Int! params: ParamFusion! private_keys: [String]!): String
         pr_market_create_order(private_key: String! params: CreateOrder!): JSON
         pr_market_bid(private_key: String! params: Bid!): JSON
     }
