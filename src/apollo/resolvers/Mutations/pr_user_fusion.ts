@@ -18,7 +18,7 @@ export const pr_user_fusion = async (root: any, args: any, ctx: any) => {
         if (quantity < 1) throw new Error("Invalid quantity")
         const accounts: string[] = []
         console.log("total address:", private_keys.length)
-        const promises:any[] = []
+        const promises:Promise<any>[] = []
         for (let private_key of private_keys) {
             web3.eth.accounts.wallet.add(private_key)
             const { address } = web3.eth.accounts.privateKeyToAccount(private_key)
