@@ -65,6 +65,10 @@ export const typeDefs = gql`
         times: Int!
         options: [Int]!
     }
+    type RetroactiveCampaign {
+        totalWalletclaimed: Int
+        totalREclaimed: Int
+    }
     type Mutation {
         multiple_request_pr_para_art_create(http_url: String! request_number: Int!, params: InputParaart!): RequestParaartCreate
         pr_user_unbox(tokenId: Int! private_key: String!): JSON
@@ -75,6 +79,7 @@ export const typeDefs = gql`
     type Query {
         statistic_user_fusion_with_date_get(mod_key: String! start_timestamp: Float! end_timestamp: Float!): StatisticFusionPage
         statistic_box_with_date_get(mod_key: String start_timestamp: Float! end_timestamp: Float!): StatisticBox
+        statistic_retroactive_campaign_refill_energy(campaign_name: String! start_timestamp: Float end_timestamp: Float): RetroactiveCampaign
     }
 
 `

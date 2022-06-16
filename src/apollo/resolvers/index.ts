@@ -5,6 +5,7 @@ import { pr_user_fusion } from "./Mutations/pr_user_fusion"
 import { pr_user_unbox } from "./Mutations/pr_user_unbox"
 import { statistic_box_with_date_get } from "./Queries/statistic_box_with_date_get"
 import { statistic_user_fusion_with_date_get } from "./Queries/statistic_user_fusion_with_date_get"
+import {statistic_retroactive_campaign_refill_energy} from "./Queries/statistic_retroactive_campaign_refill_energy"
 
 const resolvers = {
     Mutation: {
@@ -17,6 +18,7 @@ const resolvers = {
     Query: {
         statistic_user_fusion_with_date_get,
         statistic_box_with_date_get,
+        statistic_retroactive_campaign_refill_energy,
     },
 }
 export { resolvers }

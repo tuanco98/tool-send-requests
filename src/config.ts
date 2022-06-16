@@ -25,3 +25,5 @@ if (!process.env.MOD_KEY) throw new Error('MOD_KEY must be provided')
 export const config_MOD_KEY = process.env.MOD_KEY
 if (!process.env.MONGO_BOX_URI) throw new Error('MONGO_BOX_URI must be provided')
 export const config_MONGO_BOX_URI = process.env.MONGO_BOX_URI
+if (!process.env.MONGO_USER_URI) throw new Error('MONGO_USER_URI must be provided')
+export const config_MONGO_USER_URI = process.env.MONGO_USER_URI

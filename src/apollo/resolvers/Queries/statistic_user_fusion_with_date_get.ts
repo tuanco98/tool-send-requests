@@ -1,4 +1,4 @@
-import { Fusions } from "../../../mongodb"
+import { Fusions } from "../../../mongodb-fusion"
 import { config_MOD_KEY } from '../../../config';
 export const statistic_user_fusion_with_date_get = async (root: any, args: any) => {
     try {
